@@ -3,16 +3,27 @@ set -euo pipefail
 
 FILE="$(basename "$0")"
 
+
 # Enable the multilib repository
 cat << EOM >> /etc/pacman.conf
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+
+[cachyos]
+Server = https://mirror.cachyos.org/repo/x86_64/$repo
 EOM
 
 # Use all available threads to build a package
 sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc) -l$(nproc)"/g' /etc/makepkg.conf
 
+# CachyOS repository keys
+pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key F3B607488DB35A47
+
 pacman -Syu --noconfirm --needed base-devel
+
+# A workaround to fix the build of the latest kernels
+pacman -S cachyos/pahole
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
