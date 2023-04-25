@@ -10,7 +10,7 @@ cat << EOM >> /etc/pacman.conf
 Include = /etc/pacman.d/mirrorlist
 
 [cachyos]
-Server = https://mirror.cachyos.org/repo/x86_64/$repo
+Server = https://mirror.cachyos.org/repo/x86_64/cachyos
 EOM
 
 # Use all available threads to build a package
