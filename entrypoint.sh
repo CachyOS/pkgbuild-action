@@ -17,6 +17,7 @@ EOM
 sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc) -l$(nproc)"/g' /etc/makepkg.conf
 
 # CachyOS repository keys
+pacman-key --init
 pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key F3B607488DB35A47
 
