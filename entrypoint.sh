@@ -23,7 +23,7 @@ pacman-key --lsign-key F3B607488DB35A47
 pacman -Syu --noconfirm --needed base-devel
 
 # A workaround to fix the build of the latest kernels
-pacman -S cachyos/pahole
+pacman -S --noconfirm --needed cachyos/pahole
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
