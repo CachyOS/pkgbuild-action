@@ -29,10 +29,6 @@ inputs:
     description: "Additional arguments to pass to makepkg."
     required: false
     default: ""
-  envvars:
-    description: "Export environment variables for makepkg"
-    required: false
-    default: ""
 outputs:
   pkgfile0:
     description: "Filename of the first generated package archive. Usually only one."
